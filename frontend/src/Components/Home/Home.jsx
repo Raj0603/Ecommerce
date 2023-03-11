@@ -1,36 +1,47 @@
-import "./Home.css"
-import Product from "../Product/Product"
-import { Fragment } from "react";
+
+/* eslint-disable no-unused-vars */
+
+import "./Home.css";
+import Product from "../ProductCard/ProductCard";
+import { useEffect } from "react";
 import Metadata from "../Metadata";
+import { clearErrors, getProduct } from "../../actions/productActions";
+import { useSelector, useDispatch } from "react-redux";
+import Loading from "../Loader/Loading";
+import {useAlert} from "react-alert"
 
-const product = {
-    name:"Blue Tshirt",
-    images:[{url:"https://contents.mediadecathlon.com/p2014174/495fbfd5eabbd253be4ab8323e098e5a/p2014174.jpg?format=auto&quality=70&f=650x0"}],
-    price:3000,
-    _id:"Abhishek"
-};
+const Home = () => {
 
-const Home = ()=>{
+  const alert=useAlert()
+  const dispatch = useDispatch();
+  const {loading,error,products,productCount} = useSelector(state=>state.products);
 
+  useEffect(() => {
 
-    return(
-        <>
-        <Metadata title="ECOMMERCE" />
-        <div className="home-main">
+    if(error){
+      alert.error(error);
+      dispatch(clearErrors())
+    }
+    dispatch(getProduct());
+  }, [dispatch, error, alert]);
 
-            <div className="productContainer">
-                <Product product={product}/>
-                <Product product={product}/>
-                <Product product={product}/>
-                <Product product={product}/>
-
-                <Product product={product}/>
-                <Product product={product}/>
-                <Product product={product}/>
-                <Product product={product}/>
-            </div>
+  return (
+    <>
+    
+    {loading ? <Loading/> : 
+    <>
+      <Metadata title="ECOMMERCE" />
+      <div className="home-main">
+        <div className="productContainer">
+          {products && products.map(product => <Product product={product} />)}
+          
         </div>
-        </>
-    )
-}
-export default Home
+      </div>
+    </>
+    
+    }
+    
+    </>
+  );
+};
+export default Home;

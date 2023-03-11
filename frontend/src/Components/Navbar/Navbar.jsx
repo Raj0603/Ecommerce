@@ -1,14 +1,31 @@
+/* eslint-disable jsx-a11y/anchor-is-valid */
+
 import "./Navbar.css";
 import Logo from "../../assets/logo.png";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faShoppingCart, faUser } from "@fortawesome/fontawesome-free-solid";
+import React, { useState } from "react";
+import { Link } from "react-router-dom";
 
-function Navbar() {
+function Navbar({ history }) {
+  const [keyword, setKeyword] = useState("");
+
+  const searchSubmitHandler = (e) => {
+    e.preventDefault();
+    if(keyword.trim()) {
+      history.push(`/products/${keyword}`);
+    } else{
+      history.push("/products")
+    }
+  };
+
   return (
     <>
       <div className="navbar-main">
         <div className="left-nav">
+          <Link to="/">
           <img src={Logo} alt="" className="nav-logo" />
+          </Link>
         </div>
         <div className="center-nav">
           <a className="nav-a-list" href="">
@@ -20,9 +37,9 @@ function Navbar() {
               <li className="dropdown-li">Accessories</li>
             </ul>
           </a>
-          <a className="nav-a-list" href="">
-            Womens
-          </a>
+          <Link to="/products" className="nav-a-list">
+            Products
+          </Link>
           <a className="nav-a-list" href="">
             Kids
           </a>
@@ -33,7 +50,14 @@ function Navbar() {
         <div className="right-nav">
           <ul className="right-search">
             <li className="search-list">
-              <input type="text" name="" id="nav-search" placeholder="search" />
+              <input
+                type="text"
+                name=""
+                id="nav-search"
+                placeholder="search"
+                onChange={(e) => setKeyword(e.target.value)}
+                onSubmit={searchSubmitHandler}
+              />
             </li>
             <li className="search-list icon-nav">
               <FontAwesomeIcon icon={faShoppingCart} className="fa-lg" />

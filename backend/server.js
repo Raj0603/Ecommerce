@@ -4,6 +4,9 @@ const dotenv =require('dotenv')
 
 const connectDatabase = require("./config/database")
 
+const cors = require('cors');
+app.use(cors());
+
 
 //handling Uncaught Exception 
 

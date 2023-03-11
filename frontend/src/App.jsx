@@ -3,6 +3,8 @@ import Home from "./Components/Home/Home";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Footer from "./Components/Footer/Footer";
 import Navbar from "./Components/Navbar/Navbar";
+import ProductDetails from "./Components/ProductDetails/ProductDetails"
+import Products from "./Components/Products/Products";
 // import Product from './Components/Product/Product'
 
 const App = () => {
@@ -11,6 +13,8 @@ const App = () => {
         <Navbar />
       <Routes>
         <Route path="/" element={<Home />} />
+        <Route exact path="/product/:id" element={<ProductDetails />} />
+        <Route exact path="/products" element={<Products />} />
       </Routes>
         <Footer />
     </Router>

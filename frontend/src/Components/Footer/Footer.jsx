@@ -1,3 +1,5 @@
+/* eslint-disable jsx-a11y/anchor-is-valid */
+
 import "./Footer.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {faPaperPlane} from "@fortawesome/fontawesome-free-solid"
