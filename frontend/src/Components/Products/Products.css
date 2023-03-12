@@ -62,10 +62,10 @@
     background-color: tomato;
   }
   
-  .pageLinkActive {
+  /* .pageLinkActive {
     color: white;
   }
-  
+   */
   .filterBox {
     width: 10vmax;
     position: absolute;
@@ -84,6 +84,7 @@
     margin: 0.4vmax;
     cursor: pointer;
     transition: all 0.5s;
+    font-size: large;
   }
   .category-link:hover {
     color: tomato;

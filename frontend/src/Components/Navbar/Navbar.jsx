@@ -3,19 +3,19 @@
 import "./Navbar.css";
 import Logo from "../../assets/logo.png";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faShoppingCart, faUser } from "@fortawesome/fontawesome-free-solid";
+import { faShoppingCart, faUser, } from "@fortawesome/fontawesome-free-solid";
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 
-function Navbar({ history }) {
+const Navbar =({ history }) => {
   const [keyword, setKeyword] = useState("");
 
   const searchSubmitHandler = (e) => {
     e.preventDefault();
-    if(keyword.trim()) {
+    if (keyword.trim()) {
       history.push(`/products/${keyword}`);
-    } else{
-      history.push("/products")
+    } else {
+      history.push("/products");
     }
   };
 
@@ -50,11 +50,22 @@ function Navbar({ history }) {
         <div className="right-nav">
           <ul className="right-search">
             <li className="search-list">
+              {/* <form onSubmit={searchSubmitHandler}>
+                <input
+                  type="text"
+                  placeholder="Search"
+                  onChange={(e) => setKeyword(e.target.value)}
+                />
+                <button type="submit">
+                  <FontAwesomeIcon icon={faSearch} />
+                </button>
+              </form> */}
               <input
                 type="text"
-                name=""
+                name="search"
                 id="nav-search"
                 placeholder="search"
+                // value={keyword}
                 onChange={(e) => setKeyword(e.target.value)}
                 onSubmit={searchSubmitHandler}
               />
@@ -63,7 +74,9 @@ function Navbar({ history }) {
               <FontAwesomeIcon icon={faShoppingCart} className="fa-lg" />
             </li>
             <li className="search-list icon-nav">
+              <Link to="/login">
               <FontAwesomeIcon icon={faUser} className="fa-lg" />
+              </Link>
             </li>
           </ul>
         </div>

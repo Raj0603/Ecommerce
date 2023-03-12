@@ -2,6 +2,7 @@ const Product = require("../models/productModel");
 const ErrorHandler = require("../utils/errorhandler");
 const catchAsyncErrors = require("../middleware/catchAsyncError");
 const ApiFeatures = require("../utils/apifeatures");
+const cloudinary = require("cloudinary");
 
 // Create Products --Admin
 exports.createProduct = catchAsyncErrors(async (req, res, next) => {
@@ -19,20 +20,27 @@ exports.createProduct = catchAsyncErrors(async (req, res, next) => {
 
 exports.getAllProducts = catchAsyncErrors(async (req, res, next) => {
 
-  // return next(new ErrorHandler("This is my temp error"), 500)
   const resultPerPage = 8;
   const productsCount = await Product.countDocuments();
 
   const apiFeatures = new ApiFeatures(Product.find(), req.query)
     .search()
     .filter()
-    .pagination(resultPerPage);
-  const products = await apiFeatures.query;
+
+    let products = await apiFeatures.query;
+
+    let filteredProductsCount = products.length;
+  
+    apiFeatures.pagination(resultPerPage);
+  
+    products = await apiFeatures.query.clone();
 
   res.status(200).json({
     sucess: true,
     products,
     productsCount,
+    resultPerPage,
+    filteredProductsCount,
   });
 });
 
