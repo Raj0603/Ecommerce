@@ -1,5 +1,5 @@
 import React, { Fragment, useRef, useState, useEffect } from "react";
-// import "./Registration.css";
+import "./Registration.css";
 import Loading from "../Loader/Loading";
 import { Link } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -11,10 +11,12 @@ import {
 import { useDispatch, useSelector } from "react-redux";
 import { clearErrors, login, register } from "../../actions/userActions";
 import { useAlert } from "react-alert";
+import {useNavigate} from "react-router-dom"
 
-const Registration = ({ history }) => {
+const Registration = ({location}) => {
   const dispatch = useDispatch();
   const alert = useAlert();
+  const navigate = useNavigate();
 
   const { loading, error, isAuthenticated } = useSelector(
     (state) => state.user
@@ -34,8 +36,8 @@ const Registration = ({ history }) => {
 
   const { name, email, password } = user;
 
-  const [avatar, setAvatar] = useState("");
-  const [avatarPreview, setAvatarPreview] = useState("");
+  const [avatar, setAvatar] = useState("/Profile.png");
+  const [avatarPreview, setAvatarPreview] = useState("/Profile.png");
 
   const loginSubmit = (e) => {
     e.preventDefault();
@@ -74,15 +76,17 @@ const Registration = ({ history }) => {
     }
   };
 
+  // const redirect = location.search ? location.search.split("=")[1] : "/"
+
   useEffect(() => {
     if (error) {
       alert.error(error);
       dispatch(clearErrors());
     }
     if (isAuthenticated) {
-      history.push("/account");
+      navigate("/");
     }
-  }, [error, alert, dispatch, history, isAuthenticated]);
+  }, [error, alert, dispatch, navigate, isAuthenticated, ]);
 
   const switchTabs = (e, tab) => {
     if (tab === "login") {

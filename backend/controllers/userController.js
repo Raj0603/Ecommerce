@@ -4,10 +4,17 @@ const User = require("../models/userModel");
 const sendToken = require("../utils/jwtToken");
 const sendEmail = require("../utils/sendEmail.js");
 const crypto = require("crypto");
+const cloudinary = require("cloudinary");
 
 // Register a user
 
 exports.registerUser = catchAsyncErrors(async (req, res, next) => {
+
+  const myCloud = await cloudinary.v2.uploader.upload(req.body.avatar,{
+    folder: "avatars",
+    width: 300,
+    crop: "scale",
+  }) 
   const { name, email, password } = req.body;
 
   const user = await User.create({
@@ -15,8 +22,8 @@ exports.registerUser = catchAsyncErrors(async (req, res, next) => {
     email,
     password,
     avatar: {
-      public_id: "This is a sample id",
-      url: "ppurl",
+      public_id: myCloud.public_id,
+      url: myCloud.secure_url,
     },
   });
 
@@ -76,11 +83,13 @@ exports.forgotPassword = catchAsyncErrors(async (req, res, next) => {
 
   await user.save({ validateBeforeSave: false });
 
-  const resetpasswordUrl = `${req.protocol}://${req.get(
-    "host"
-  )}/api/v1/password/reset/${resetToken}`;
+  const resetpasswordUrl = `${process.env.FRONTEND_URL}/password/reset/${resetToken}`;
 
-  const message = `Your password reset token is:  \n\n ${resetpasswordUrl} \n\nIf you have not requested this email then, please ignore it `;
+  // const resetpasswordUrl = `${req.protocol}://${req.get(
+  //   "host"
+  // )}/api/v1/password/reset/${resetToken}`;
+
+  const message = `Your password reset token is t:  \n\n ${resetpasswordUrl} \n\nIf you have not requested this email then, please ignore it `;
 
   try {
     await sendEmail({
@@ -175,7 +184,26 @@ exports.updateProfile = catchAsyncErrors(async (req, res, next) => {
     email: req.body.email,
   };
 
-  // We will add cloudinary Later
+  if(req.body.avatar !== ""){
+  
+    const user = await User.findById(req.user.id)
+
+    const imageId = user.avatar.public_id;
+
+    await cloudinary.v2.uploader.destroy(imageId)
+
+    const myCloud = await cloudinary.v2.uploader.upload(req.body.avatar,{
+      folder: "avatars",
+      width: 300,
+      crop: "scale",
+    })
+
+    newUserData.avatar={
+      public_id: myCloud.public_id,
+      url: myCloud.secure_url,
+    }
+    
+  } 
 
   const user = await User.findByIdAndUpdate(req.user.id, newUserData, {
     new: true,

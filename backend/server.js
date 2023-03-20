@@ -1,13 +1,8 @@
 const app = require("./app");
-
 const dotenv =require('dotenv')
 const cloudinary = require('cloudinary')
 
 const connectDatabase = require("./config/database")
-
-const cors = require('cors');
-app.use(cors());
-
 
 //handling Uncaught Exception 
 
