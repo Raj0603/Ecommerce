@@ -25,6 +25,7 @@
 
 .productCard >img{
     width: 14vmax;
+    height: 40vh;
 }
 
 .productCard > div{
@@ -49,4 +50,10 @@
     box-shadow: 0 0 5px rgba(15, 15, 15, 0.26);
 
     transform: translateY(-1vmax);
+}
+
+@media screen and (max-width: 600px) {
+    .productCard >img{
+        height: 18vh;
+    }
 }

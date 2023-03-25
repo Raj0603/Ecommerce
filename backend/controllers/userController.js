@@ -35,6 +35,8 @@ exports.registerUser = catchAsyncErrors(async (req, res, next) => {
 exports.loginUser = catchAsyncErrors(async (req, res, next) => {
   const { email, password } = req.body;
 
+  // checking if user has given password and email both
+
   if (!email || !password) {
     return next(new ErrorHandler("Please enter Email and Password", 400));
   }
@@ -112,6 +114,7 @@ exports.forgotPassword = catchAsyncErrors(async (req, res, next) => {
   }
 });
 
+// Reset Password
 exports.resetPassword = catchAsyncErrors(async (req, res, next) => {
   // Creating Token Hash
   const resetpasswordToken = crypto
@@ -282,6 +285,10 @@ exports.deleteUser = catchAsyncErrors(async (req, res, next) => {
       new ErrorHandler(`User does not exist with id ${req.params.id}`, 400)
     );
   }
+
+  const imageId = user.avatar.public_id;
+
+  await cloudinary.v2.uploader.destroy(imageId);
 
   await user.remove();
 

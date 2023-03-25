@@ -13,6 +13,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { useAlert } from "react-alert";
 import { logout } from "../../actions/userActions";
+import { EMPTY_CART_INFO } from "../../constants/cartConstants";
 
 const Navbar = ({ user, isAuthenticated }) => {
   const dispatch = useDispatch();
@@ -38,6 +39,9 @@ const Navbar = ({ user, isAuthenticated }) => {
   function logoutUser() {
     dispatch(logout());
     alert.success("Logout Successfully");
+    dispatch({
+      type: EMPTY_CART_INFO,
+    });
   }
   const [keyword, setKeyword] = useState("");
 
@@ -81,70 +85,86 @@ const Navbar = ({ user, isAuthenticated }) => {
         <div className="right-nav">
           <ul className="right-search">
             <li className="search-list">
-              
-              <input
-                type="text"
-                name="search"
-                id="nav-search"
-                placeholder="search"
-                value={keyword}
-                onChange={(e) => setKeyword(e.target.value)}
-                onSubmit={searchSubmitHandler}
-              />
+              <form onSubmit={searchSubmitHandler}>
+                {/* <FontAwesomeIcon icon={faSearch} className="fa-lg" /> */}
+                <input
+                  id="nav-search"
+                  type="text"
+                  placeholder="Search Products"
+                  onChange={(e) => setKeyword(e.target.value)}
+                />
+                {/* <input type="submit" value="Search" /> */}
+              </form>
             </li>
             <li className="search-list icon-nav">
               <Link className="link" to="/cart">
-              <FontAwesomeIcon icon={faShoppingCart} className="fa-lg" />
+                <FontAwesomeIcon icon={faShoppingCart} className="fa-lg" />
               </Link>
             </li>
             <li className="search-list icon-nav p-img">
               <span onClick={handleDropdownToggle}>
-                <img src={ "/Profile.png"} alt="/Profile.png" className="profile-img"/>
+                <img
+                  src={"/Profile.png"}
+                  alt="/Profile.png"
+                  className="profile-img"
+                />
               </span>
               <ul
                 className={
                   isDropdownOpen ? "navbar-dropdown active" : "navbar-dropdown"
                 }
               >
-              {isAuthenticated ? (<>
-                <li className={
-                  isAdmin ? "navbar-dropdown-item" : "navbar-dropdown-item2"
-                }>
-                  <Link to="/dashboard" className="navbar-dropdown-link">
-                    Dashboard
-                  </Link>
-                </li>
-                <li className="navbar-dropdown-item">
-                  <Link to="/account" className="navbar-dropdown-link">
-                    My Profile
-                  </Link>
-                </li>
-                <li className="navbar-dropdown-item">
-                  <Link to="/orders" className="navbar-dropdown-link">
-                    My Orders
-                  </Link>
-                </li>
-                <li className="navbar-dropdown-item">
-                  <Link to="/settings" className="navbar-dropdown-link">
-                    Settings
-                  </Link>
-                </li>
-                <li className="navbar-dropdown-item" onClick={logoutUser}>
-                  <Link to="/logout" className="navbar-dropdown-link">
-                    Logout
-                  </Link>
-                </li></>) : (<><li className="navbar-dropdown-item">
-                  <Link to="/login" className="navbar-dropdown-link">
-                    Login
-                  </Link>
-                </li>
-                <li className="navbar-dropdown-item">
-                  <Link to="/login" className="navbar-dropdown-link">
-                    Signup
-                  </Link>
-                </li>
-                </>)}
-                
+                {isAuthenticated ? (
+                  <>
+                    <li
+                      className={
+                        isAdmin
+                          ? "navbar-dropdown-item"
+                          : "navbar-dropdown-item2"
+                      }
+                    >
+                      <Link
+                        to="/admin/dashboard"
+                        className="navbar-dropdown-link"
+                      >
+                        Dashboard
+                      </Link>
+                    </li>
+                    <li className="navbar-dropdown-item">
+                      <Link to="/account" className="navbar-dropdown-link">
+                        My Profile
+                      </Link>
+                    </li>
+                    <li className="navbar-dropdown-item">
+                      <Link to="/orders" className="navbar-dropdown-link">
+                        My Orders
+                      </Link>
+                    </li>
+                    <li className="navbar-dropdown-item">
+                      <Link to="/settings" className="navbar-dropdown-link">
+                        Settings
+                      </Link>
+                    </li>
+                    <li className="navbar-dropdown-item" onClick={logoutUser}>
+                      <Link to="/logout" className="navbar-dropdown-link">
+                        Logout
+                      </Link>
+                    </li>
+                  </>
+                ) : (
+                  <>
+                    <li className="navbar-dropdown-item">
+                      <Link to="/login" className="navbar-dropdown-link">
+                        Login
+                      </Link>
+                    </li>
+                    <li className="navbar-dropdown-item">
+                      <Link to="/login" className="navbar-dropdown-link">
+                        Signup
+                      </Link>
+                    </li>
+                  </>
+                )}
               </ul>
             </li>
           </ul>

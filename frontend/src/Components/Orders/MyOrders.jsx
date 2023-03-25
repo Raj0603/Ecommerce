@@ -1,5 +1,5 @@
 import React, { Fragment, useEffect } from "react";
-import { DataGrid,  } from '@mui/x-data-grid';
+import {DataGrid, GridColDef} from "@mui/x-data-grid"
 import "./myOrders.css";
 import { useSelector, useDispatch } from "react-redux";
 import { clearErrors, myOrders } from "../../actions/orderActions";
@@ -19,11 +19,18 @@ const MyOrders = () => {
 
   const alert = useAlert();
   
+  // const ActionButton = (params) => {
+  //   return (
+  //     <Link to={`/order/${params.row.id}`}>
+  //       <LaunchIcon />
+  //     </Link>
+  //   );
+  // }
 
   const { loading, error, orders } = useSelector((state) => state.myOrders);
   const { user } = useSelector((state) => state.user);
 
-  const columns = [
+  const columns =   [
     { field: "id", headerName: "Order ID", minWidth: 300, flex: 1 },
 
     {
@@ -31,11 +38,11 @@ const MyOrders = () => {
       headerName: "Status",
       minWidth: 150,
       flex: 0.5,
-      // cellClassName: (params) => {
-      //   return params.getValue(params.id, "status") === "Delivered"
-      //     ? "greenColor"
-      //     : "redColor";
-      // },
+      cellClassName: (params) => {
+        return params.row.status === "Delivered"
+          ? "greenColor"
+          : "redColor";
+      },
     },
     {
       field: "itemsQty",
@@ -60,11 +67,13 @@ const MyOrders = () => {
       minWidth: 150,
       type: "number",
       sortable: false,
-      // renderCell: params => {
-      //   <Link to={`/order${params.getValue(params.id, "id")}`}>
-      //     <LaunchIcon/>
-      //   </Link>
-      // }
+      renderCell: (params) => {
+        return (
+          <Link to={`/order/${params.row.id}`}>
+            <LaunchIcon />
+          </Link>
+        );
+      },
     },
   ];
   const rows = [];

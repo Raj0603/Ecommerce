@@ -1,6 +1,6 @@
 import "./App.css";
 import Home from "./Components/Home/Home";
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import { BrowserRouter as Router, Routes, Route,  } from "react-router-dom";
 import Footer from "./Components/Footer/Footer";
 import Navbar from "./Components/Navbar/Navbar";
 import ProductDetails from "./Components/ProductDetails/ProductDetails";
@@ -25,6 +25,16 @@ import ConfirmOrder from "./Components/Cart/ConfirmOrder";
 import StripePayments from "./Components/Cart/StripePayments";
 import OrderSuccess from "./Components/Cart/OrderSuccess";
 import MyOrders from "./Components/Orders/MyOrders";
+import OrderDetails from "./Components/Orders/OrderDetails";
+import Dashboard from "./Components/Admin/Dashboard";
+import ProductList from "./Components/Admin/ProductList";
+import NewProduct from "./Components/Admin/NewProduct";
+import UpdateProduct from "./Components/Admin/UpdateProduct";
+import OrderList from "./Components/Admin/OrderList";
+import ProcessOrder from "./Components/Admin/ProcessOrder";
+import UsersList from "./Components/Admin/UsersList";
+import UpdateUser from "./Components/Admin/UpdateUser";
+import ProductReviews from "./Components/Admin/ProductReviews";
 // import OrderDetails from "./Components/Orders/OrderDetails";
 // import MyOrders from "./Components/Orders/MyOrders";
 
@@ -44,8 +54,9 @@ const App = () => {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route exact path="/product/:id" element={<ProductDetails />} />
-        <Route exact path="/products" element={<Products />} />
         <Route exact path="/login" element={<Registration />} />
+        <Route exact path="/products" element={<Products />} />
+        <Route path="/products/:keyword" element={<Products />} />
         <Route exact path="/logout" element={<Navigate to="/" />} />
         <Route exact path="/password/forgot" element={<ForgotPassword />} />
         <Route
@@ -63,6 +74,16 @@ const App = () => {
           <Route exact path="/success" element={<OrderSuccess />} />
           <Route exact path="/order/confirm" element={<ConfirmOrder />} />
           <Route exact path="/orders" element={<MyOrders />} />
+          <Route exact path="/order/:id" element={<OrderDetails />} />
+          <Route  isAdmin={true} exact path="/admin/dashboard" element={<Dashboard />} />
+          <Route  isAdmin={true} exact path="/admin/products" element={<ProductList />} />
+          <Route  isAdmin={true} exact path="/admin/product" element={<NewProduct />} />
+          <Route  isAdmin={true} exact path="/admin/product/:id" element={<UpdateProduct />} />
+          <Route  isAdmin={true} exact path="/admin/orders" element={<OrderList />} />
+          <Route  isAdmin={true} exact path="/admin/order/:id" element={<ProcessOrder />} />
+          <Route  isAdmin={true} exact path="/admin/users" element={<UsersList />} />
+          <Route  isAdmin={true} exact path="/admin/user/:id" element={<UpdateUser />} />
+          <Route  isAdmin={true} exact path="/admin/reviews" element={<ProductReviews />} />
 
           <Route exact path="/process/payment" element={<StripePayments />} />
 

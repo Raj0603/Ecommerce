@@ -15,6 +15,7 @@ exports.processPayment = catchAsyncErrors(async (req, res, next) => {
 
     res.status(200).json({
         client_secret: myPayment.client_secret,
+        success:true
     });
 })
 

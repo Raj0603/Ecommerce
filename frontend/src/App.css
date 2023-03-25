@@ -10,9 +10,14 @@ input::-webkit-outer-spin-button{
 }
 
 .greenColor{
-    color: green;
+    color: green !important;
 }
 
 .redColor{
-    color: red;
+    color: red !important;
 }
+
+/* D4C2B4
+BA7B4C
+E1BA91
+271A13 */

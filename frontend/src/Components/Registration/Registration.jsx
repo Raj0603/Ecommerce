@@ -94,14 +94,14 @@ const Registration = ({location}) => {
       switcherTab.current.classList.remove("shiftToRight");
 
       registerTab.current.classList.remove("shiftToNeutralForm");
-      registerTab.current.classList.remove("shiftToLeft");
+      loginTab.current.classList.remove("shiftToLeft");
     }
     if (tab === "register") {
-      switcherTab.current.classList.remove("shiftToNeutral");
       switcherTab.current.classList.add("shiftToRight");
+      switcherTab.current.classList.remove("shiftToNeutral");
 
       registerTab.current.classList.add("shiftToNeutralForm");
-      registerTab.current.classList.add("shiftToLeft");
+      loginTab.current.classList.add("shiftToLeft");
     }
   };
 
