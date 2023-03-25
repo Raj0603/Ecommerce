@@ -5,8 +5,6 @@ import Logo from "../../assets/logo.png";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faShoppingCart,
-  faUser,
-  faSearch,
 } from "@fortawesome/fontawesome-free-solid";
 import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
@@ -58,6 +56,28 @@ const Navbar = ({ user, isAuthenticated }) => {
     <>
       <div className="navbar-main">
         <div className="left-nav">
+          <div id="menuToggle">
+            <input type="checkbox" />
+
+            <span></span>
+            <span></span>
+            <span></span>
+
+            <ul id="menu">
+              <a href="#">
+                <li>Home</li>
+              </a>
+              <a href="#">
+                <li>About</li>
+              </a>
+              <a href="#">
+                <li>Info</li>
+              </a>
+              <a href="#">
+                <li>Contact</li>
+              </a>
+            </ul>
+          </div>
           <Link to="/">
             <img src={Logo} alt="" className="nav-logo" />
           </Link>
@@ -96,7 +116,7 @@ const Navbar = ({ user, isAuthenticated }) => {
                 {/* <input type="submit" value="Search" /> */}
               </form>
             </li>
-            <li className="search-list icon-nav">
+            <li className="search-list icon-nav" id="nav-sc">
               <Link className="link" to="/cart">
                 <FontAwesomeIcon icon={faShoppingCart} className="fa-lg" />
               </Link>
