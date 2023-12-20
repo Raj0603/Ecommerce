@@ -1,0 +1,194 @@
+@import url("https://fonts.googleapis.com/css2?family=Archivo+Black&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Oswald&display=swap');
+
+*{
+  font-family: 'Open Sans', sans-serif;
+}
+
+.aboutContainer {
+  height: 100vh;
+  width: 100vw;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+.aboutHeading {
+  display: flex;
+  margin: 5vh;
+  width: 70vw;
+  height: 15vh;
+  font-weight: bold;
+  text-align: center;
+  align-items: center;
+  justify-content: center;
+}
+
+.aboutData{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 70vw;
+  height: 70vh;
+}
+
+.aboutImg #app{
+  width: 35vw;
+  height: auto;
+}
+
+.aboutDescription {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 35vw;
+  font-family: 'Open Sans', sans-serif;
+  height: 70vh;
+}
+
+#aboutText {
+  display: inline;
+  font-family: "Archivo Black", sans-serif;
+  font-size: 75px;
+  letter-spacing: 1vw;
+}
+.aboutMe {
+  width: 70vw;
+  height: 15vh;
+  margin-top: 10vh;
+}
+#t2 {
+  font-size: x-large;
+}
+#name2 {
+  font-weight: bold;
+  font-size: xxx-large;
+  color: #ec8c25;
+  font-family: 'Playfair Display', serif;
+}
+#summary {
+  margin-top: 5vh;
+  font-family: 'Open Sans', sans-serif;
+}
+.whatIDO {
+  margin-top: 20px;
+  font-family:'Montserrat', sans-serif;
+  font-weight: bolder;
+  font-size: larger;
+  margin-bottom: 10px;
+}
+.skillListContainer{
+  display: flex;
+  flex-wrap: wrap;
+  
+  justify-content: space-evenly;
+  margin-top: 5vh;
+}
+.skillImg{
+  width: 12vw;
+  height: 12vh;
+  background-color: white;
+}
+.skillList{
+  display: flex;
+  aspect-ratio: 3/2;
+  object-fit: contain;
+  align-items: center;
+}
+.skilltext{
+  margin-left: 2vw;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+}
+
+.button {
+  position: relative;
+  width: 150px;
+  height: 40px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  border: 1px solid #ec8c25;
+  background-color: #ec8c25;
+  overflow: hidden;
+  margin-top: 5vh;
+}
+
+.button, .button__icon, .button__text {
+  transition: all 0.3s;
+}
+
+.button .button__text {
+  transform: translateX(15px);
+  color: #fff;
+  font-weight: 600;
+}
+
+.button .button__icon {
+  position: absolute;
+  transform: translateX(109px);
+  height: 100%;
+  width: 39px;
+  background-color: #ec8c25;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.button .svg {
+  width: 20px;
+  fill: #fff;
+}
+
+.button:hover {
+  background: #ec8c25;
+}
+
+.button:hover .button__text {
+  color: transparent;
+}
+
+.button:hover .button__icon {
+  width: 148px;
+  transform: translateX(0);
+}
+
+.button:active .button__icon {
+  background-color: #ec8c25;
+}
+
+.button:active {
+  border: 1px solid #ec8c25;
+}
+
+@media only screen and (max-width: 600px) {
+
+  .aboutContainer{
+    height: 75vh;
+  }
+
+  .aboutDescription{
+    height: 50vh;
+  }
+  .aboutHeading{
+    width: 100vw;
+  }
+  #aboutText {
+    font-size: 50px;
+  }
+
+  .aboutData{
+    width: 100vw;
+    height: 45vh;
+  }
+
+  .aboutImg{
+    display: none;
+  }
+
+  .aboutDescription{
+    width: 90vw;
+  }
+
+
+}

@@ -3,12 +3,16 @@
     height: 100vh;
     max-width: 100%;
     display: flex;
-    justify-content: center;
+    flex-direction: column;
     align-items: center;
     background-color: rgb(231, 231, 231);
-    /* position: fixed; */
     top: 0%;
     left: 0;
+  }
+  
+  .updateProfileContainer > h2{
+    margin-top: 10vh;
+    margin-bottom: 7vh;
   }
   
   .updateProfileBox {
@@ -36,7 +40,7 @@
     margin: auto;
     padding: 2vmax;
     justify-content: space-evenly;
-    height: 70%;
+    height: 100%;
     transition: all 0.5s;
   }
   
@@ -113,6 +117,10 @@
   @media screen and (max-width: 600px) {
     .updateProfileContainer {
       background-color: white;
+    }
+
+    .updateProfileContainer > h2{
+      margin-bottom: 0;
     }
     .updateProfileBox {
       width: 100vw;

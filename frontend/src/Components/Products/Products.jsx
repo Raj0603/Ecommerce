@@ -10,12 +10,11 @@ import Slider from "@mui/material/Slider";
 import { Typography } from "@mui/material";
 import { useParams } from "react-router-dom";
 
-
 const categories = ["Laptop", "Phone"];
 
 const Products = () => {
   const dispatch = useDispatch();
-  const {keyword} = useParams()
+  const { keyword } = useParams();
 
   const alert = useAlert();
 
@@ -23,6 +22,9 @@ const Products = () => {
   const [price, setPrice] = useState([0, 25000]);
   const [category, setCategory] = useState("");
   const [ratings, setRating] = useState(0);
+  const [minPrice, setMinPrice] = useState(0);
+  const [maxPrice, setMaxPrice] = useState(25000);
+  const [isFilterOpen, setIsFilterOpen] = useState(false); // State for mobile filter toggle
 
   const {
     products,
@@ -39,8 +41,20 @@ const Products = () => {
     setCurrentPage(e);
   };
 
-  const priceHandler = (event, newPrice) => {
-    setPrice(newPrice);
+  const priceHandler = () => {
+    setPrice([minPrice, maxPrice]);
+    setCurrentPage(1);
+    setIsFilterOpen(!isFilterOpen);
+  };
+
+  const resetFilters = () => {
+    setMinPrice(0);
+    setMaxPrice(25000);
+    setRating(0);
+    setCategory("");
+    setCurrentPage(1);
+    dispatch(getProduct(keywords, 1, [0, 25000], "", 0));
+    setIsFilterOpen(!isFilterOpen);
   };
 
   let count = filteredProductsCount;
@@ -53,33 +67,46 @@ const Products = () => {
     dispatch(getProduct(keywords, currentPage, price, category, ratings));
   }, [dispatch, currentPage, error, keywords, price, alert, category, ratings]);
 
+  const toggleFilter = () => {
+    setIsFilterOpen(!isFilterOpen);
+  };
+
   return (
     <>
       {loading ? (
         <Loading />
       ) : (
         <>
-          <h2 className="productsHeading">Products</h2>
-
-          <div className="products">
-            {products &&
-              products.map((product) => (
-                <ProductCard key={product._id} product={product} />
-              ))}
+        <div className="mobileToggleBar" onClick={toggleFilter}>
+            <span>{isFilterOpen ? "Hide Filters" : "Show Filters"}</span>
           </div>
+          <div
+            className={`mobileFilter ${
+              isFilterOpen ? "showFilters" : "hideFilters"
+            }`}
+          >
+            <div className="mobilefb" id="fb-main">
+            <span className="typ">Price</span>
+            <div className="price-input-boxes">
+              <input
+                type="number"
+                placeholder="Min"
+                onChange={(e) => setMinPrice(e.target.value)}
+                className="prp-ip"
+              />
+              <input
+                type="number"
+                placeholder="Max"
+                onChange={(e) => setMaxPrice(e.target.value)}
+                className="prp-ip"
+              />
 
-          <div className="filterBox">
-            <Typography>Price</Typography>
-            <Slider
-              value={price}
-              onChange={priceHandler}
-              valueLabelDisplay="auto"
-              aria-labelledby="continuous-slider"
-              min={0}
-              max={25000}
-            />
+              <button className="prp-but" onClick={priceHandler}>
+                Search
+              </button>
+            </div>
 
-            <Typography>Categories</Typography>
+            <span className="typ">Categories</span>
             <ul className="categoryBox">
               {categories.map((category) => (
                 <li
@@ -92,19 +119,92 @@ const Products = () => {
               ))}
             </ul>
 
-            <fieldset>
-              <Typography component="legend">Ratings Above</Typography>
-              <Slider
-                value={ratings}
-                onChange={(e, newRating) => {
-                  setRating(newRating);
-                }}
-                aria-labelledby="continuous-slider"
-                valueLabelDisplay="auto"
-                min={0}
-                max={5}
+            <span component="legend" className="typ">
+              Ratings Above
+            </span>
+            <Slider
+              value={ratings}
+              onChange={(e, newRating) => {
+                setRating(newRating);
+              }}
+              aria-labelledby="continuous-slider"
+              valueLabelDisplay="auto"
+              valueLabelStep={0.1}
+              min={0}
+              max={5}
+            />
+            {/* </fieldset> */}
+
+            <button className="prp-but" onClick={resetFilters}>
+              Reset
+            </button>
+          </div>
+          </div>
+          <h2 className="productsHeading">Products</h2>
+
+          <div className="products">
+            {products &&
+              products.map((product) => (
+                <ProductCard key={product._id} product={product} />
+              ))}
+          </div>
+
+          {/* Mobile Toggle Bar */}
+          
+
+          <div className="filterBox" id="fb-main">
+            <span className="typ">Price</span>
+            <div className="price-input-boxes">
+              <input
+                type="number"
+                placeholder="Min"
+                onChange={(e) => setMinPrice(e.target.value)}
+                className="prp-ip"
               />
-            </fieldset>
+              <input
+                type="number"
+                placeholder="Max"
+                onChange={(e) => setMaxPrice(e.target.value)}
+                className="prp-ip"
+              />
+
+              <button className="prp-but" onClick={priceHandler}>
+                Search
+              </button>
+            </div>
+
+            <span className="typ">Categories</span>
+            <ul className="categoryBox">
+              {categories.map((category) => (
+                <li
+                  key={category}
+                  className="category-link"
+                  onClick={() => setCategory(category)}
+                >
+                  {category}
+                </li>
+              ))}
+            </ul>
+
+            <span component="legend" className="typ">
+              Ratings Above
+            </span>
+            <Slider
+              value={ratings}
+              onChange={(e, newRating) => {
+                setRating(newRating);
+              }}
+              aria-labelledby="continuous-slider"
+              valueLabelDisplay="auto"
+              valueLabelStep={0.1}
+              min={0}
+              max={5}
+            />
+            {/* </fieldset> */}
+
+            <button className="prp-but" onClick={resetFilters}>
+              Reset
+            </button>
           </div>
 
           {resultPerPage < count && (

@@ -2,10 +2,11 @@
 
 import "./Navbar.css";
 import Logo from "../../assets/logo.png";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import {
-  faShoppingCart,
-} from "@fortawesome/fontawesome-free-solid";
+// import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+// import {
+//   faShoppingCart,
+// } from "@fortawesome/fontawesome-free-solid";
+import { ShoppingCart, CircleUser } from "lucide-react";
 import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
@@ -64,18 +65,20 @@ const Navbar = ({ user, isAuthenticated }) => {
             <span></span>
 
             <ul id="menu">
-              <a href="#">
+              <Link to="/">
                 <li>Home</li>
-              </a>
+              </Link>
+              
+              <Link to="/products">
+                <li>Products</li>
+              </Link>
+              
               <a href="#">
                 <li>About</li>
               </a>
-              <a href="#">
-                <li>Info</li>
-              </a>
-              <a href="#">
+              <Link to="/contact">
                 <li>Contact</li>
-              </a>
+              </Link>
             </ul>
           </div>
           <Link to="/">
@@ -83,24 +86,18 @@ const Navbar = ({ user, isAuthenticated }) => {
           </Link>
         </div>
         <div className="center-nav">
-          <a className="nav-a-list" href="">
-            Mens
-            <ul className="dropdown">
-              <li className="dropdown-li">Topwear</li>
-              <li className="dropdown-li">Bottomwear</li>
-              <li className="dropdown-li">Footwear</li>
-              <li className="dropdown-li">Accessories</li>
-            </ul>
-          </a>
+          <Link to="/" className="nav-a-list link">
+            Home
+          </Link>
           <Link to="/products" className="nav-a-list link">
             Products
           </Link>
-          <a className="nav-a-list" href="">
-            Kids
-          </a>
-          <a className="nav-a-list" href="">
-            Sales
-          </a>
+          <Link to="/contact" className="nav-a-list link">
+            Contact Us
+          </Link>
+          <Link to="/about" className="nav-a-list link">
+            About
+          </Link>
         </div>
         <div className="right-nav">
           <ul className="right-search">
@@ -118,16 +115,18 @@ const Navbar = ({ user, isAuthenticated }) => {
             </li>
             <li className="search-list icon-nav" id="nav-sc">
               <Link className="link" to="/cart">
-                <FontAwesomeIcon icon={faShoppingCart} className="fa-lg" />
+                <ShoppingCart size={32} color="#050505" />
               </Link>
             </li>
             <li className="search-list icon-nav p-img">
               <span onClick={handleDropdownToggle}>
-                <img
+                {/* <img
                   src={"/Profile.png"}
                   alt="/Profile.png"
                   className="profile-img"
-                />
+                /> */}
+                {/* <CircleUser color="#050505" className="profile-img" /> */}
+                <CircleUser size={32} color="#050505" />
               </span>
               <ul
                 className={

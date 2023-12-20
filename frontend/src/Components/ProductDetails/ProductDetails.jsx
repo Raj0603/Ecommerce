@@ -126,9 +126,8 @@ const ProductDetails = () => {
                 <h2>{product.name}</h2>
                 <p>Product # {product._id}</p>
               </div>
-              <div className="detailsBlock-2">
-                <Rating {...options} />
-                <span>({product.numofReviews} Reviews)</span>
+              <div className="detailsBlock-4">
+                Description: <p>{product.description}</p>
               </div>
               <div className="detailsBlock-3">
                 <h1>{`₹${product.price}`}</h1>
@@ -152,9 +151,11 @@ const ProductDetails = () => {
                   {product.Stock < 1 ? "OutOfStock" : "InStock"}
                 </b>
               </p>
-              <div className="detailsBlock-4">
-                Description: <p>{product.description}</p>
+              <div className="detailsBlock-2">
+                <Rating {...options} />
+                <span>({product.numofReviews} Reviews)</span>
               </div>
+              
               <button onClick={submitReviewToggle} className="submitReview">
                 Submit Review
               </button>

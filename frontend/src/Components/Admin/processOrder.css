@@ -4,6 +4,10 @@
   background-color: white;
 }
 
+.confirmOrderPage{
+  height: auto;
+}
+
 .updateOrderForm > div {
   display: flex;
   width: 100%;

@@ -1,5 +1,6 @@
 .orderDetailsPage {
   background-color: white;
+  height: auto;
 }
 
 .orderDetailsContainer > h1 {

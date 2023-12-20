@@ -1,23 +1,33 @@
-*{
-    margin: 0;
-    scroll-behavior: smooth;
+* {
+  margin: 0;
+  scroll-behavior: smooth;
 }
 
 input::-webkit-inner-spin-button,
-input::-webkit-outer-spin-button{
-    -webkit-appearance: none;
-    margin: 0;
+input::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
 }
 
-.greenColor{
-    color: green !important;
+.greenColor {
+  color: green !important;
 }
 
-.redColor{
-    color: red !important;
+.redColor {
+  color: red !important;
 }
 
 /* D4C2B4
 BA7B4C
 E1BA91
 271A13 */
+
+body::-webkit-scrollbar {
+    width: 0 !important
+}
+
+html,
+body {
+    overflow: -moz-scrollbars-none;
+    -ms-overflow-style: none;
+}

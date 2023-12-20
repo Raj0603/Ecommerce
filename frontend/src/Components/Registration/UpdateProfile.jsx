@@ -80,51 +80,53 @@ const UpdateProfile = () => {
         <>
           <Metadata title="Update Profile" />
           <div className="updateProfileContainer">
-            <div className="updateProfileBox"></div>
+            {/* <div className="updateProfileBox"></div> */}
             <h2>Update Profile</h2>
-            <form
-              className="updateProfileForm"
-              encType="multipart/form-data"
-              onSubmit={updateProfileSubmit}
-            >
-              <div className="updateProfileName">
-                <FontAwesomeIcon icon={faUser} className="fa-lg" />
-                <input
-                  type="text"
-                  placeholder="Name"
-                  required
-                  name="name"
-                  value={name}
-                  onChange={(e) => setName(e.target.value)}
-                />
-              </div>
-              <div className="updateProfileEmail">
-                <FontAwesomeIcon icon={faEnvelope} className="fa-lg" />
-                <input
-                  type="email"
-                  placeholder="Email"
-                  required
-                  name="email"
-                  value={email}
-                  onChange={(e) => setEmail(e.target.value)}
-                />
-              </div>
+            <div className="updateProfileBox">
+              <form
+                className="updateProfileForm"
+                encType="multipart/form-data"
+                onSubmit={updateProfileSubmit}
+              >
+                <div className="updateProfileName">
+                  <FontAwesomeIcon icon={faUser} className="fa-lg" />
+                  <input
+                    type="text"
+                    placeholder="Name"
+                    required
+                    name="name"
+                    value={name}
+                    onChange={(e) => setName(e.target.value)}
+                  />
+                </div>
+                <div className="updateProfileEmail">
+                  <FontAwesomeIcon icon={faEnvelope} className="fa-lg" />
+                  <input
+                    type="email"
+                    placeholder="Email"
+                    required
+                    name="email"
+                    value={email}
+                    onChange={(e) => setEmail(e.target.value)}
+                  />
+                </div>
 
-              <div id="updateProfileImage">
-                <img src={avatarPreview} alt="Avatar Preview" />
+                <div id="updateProfileImage">
+                  <img src={avatarPreview} alt="Avatar Preview" />
+                  <input
+                    type="file"
+                    name="avatar"
+                    accept="image/*"
+                    onChange={updateProfileDataChange}
+                  />
+                </div>
                 <input
-                  type="file"
-                  name="avatar"
-                  accept="image/*"
-                  onChange={updateProfileDataChange}
+                  type="submit"
+                  value="Update Profile"
+                  className="updateProfileBtn"
                 />
-              </div>
-              <input
-                type="submit"
-                value="Update Profile"
-                className="updateProfileBtn"
-              />
-            </form>
+              </form>
+            </div>
           </div>
         </>
       )}

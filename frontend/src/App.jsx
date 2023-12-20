@@ -20,6 +20,8 @@ import UpdatePassword from "./Components/Registration/UpdatePassword";
 import Cart from "./Components/Cart/Cart";
 import Shipping from "./Components/Cart/Shipping";
 import ConfirmOrder from "./Components/Cart/ConfirmOrder";
+import ContactPage from "./Components/ContactPage/ContactPage";
+import AboutPage from "./Components/AboutPage/AboutPage";
 
 // import Payment from "./Components/Cart/Payment";
 import StripePayments from "./Components/Cart/StripePayments";
@@ -52,8 +54,10 @@ const App = () => {
       <Navbar user={user} isAuthenticated={isAuthenticated} />
 
       <Routes>
-        <Route path="/" element={<Home />} />
+        <Route exact path="/" element={<Home />} />
         <Route exact path="/product/:id" element={<ProductDetails />} />
+        <Route exact path="/contact" element={<ContactPage />} />
+        <Route exact path="/about" element={<AboutPage />} />
         <Route exact path="/login" element={<Registration />} />
         <Route exact path="/products" element={<Products />} />
         <Route path="/products/:keyword" element={<Products />} />

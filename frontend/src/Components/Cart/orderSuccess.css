@@ -26,6 +26,10 @@
   margin: 2vmax;
 }
 
+.eci{
+  visibility: hidden;
+}
+
 @media screen and (max-width: 600px) {
   .orderSuccess > a {
     padding: 3vw 6vw;
@@ -39,5 +43,8 @@
   .orderSuccess > p {
     margin: 2vmax;
     font-size: 5vw;
+  }
+  .eci{
+    visibility: hidden;
   }
 }

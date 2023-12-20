@@ -1,0 +1,322 @@
+@import url("https://fonts.googleapis.com/css2?family=Cookie&family=Oswald&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Oswald&family=Sigmar+One&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Oswald&family=Sigmar+One&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Bellefair&family=Oswald&family=Sigmar+One&display=swap");
+
+.contactContainer {
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+
+.contactHeading {
+  display: flex;
+  margin-top: 5vh;
+  font-family: "Archivo Black", sans-serif;
+  width: 70vw;
+  height: 15vh;
+  font-weight: bold;
+  text-align: center;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+.contactUs {
+  width: 70vw;
+  height: 76vh;
+  /* border: 1px solid red; */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.contactLeft,
+.contactRight {
+  width: 34vw;
+  height: 65vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.contactDesc {
+  width: 28vw;
+  margin-top: 2vh;
+  margin-bottom: 7vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: flex-start;
+  height: 20vh;
+}
+
+.contactDesc > h1 {
+  /* font-size: xx-large; */
+  font-weight: bolder;
+  margin-bottom: 10px;
+}
+
+.contactSocial {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+  align-content: center;
+  align-items: center;
+}
+.socialCard {
+  margin-bottom: 10vh;
+  width: 12vw;
+}
+
+.contactForm {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-evenly;
+  width: 28vw;
+  height: 50vh;
+}
+
+.contactFormDesc {
+  width: 28vw;
+  margin-top: 7vh;
+  margin-bottom: 7vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: flex-start;
+  height: 14vh;
+  align-items: center;
+  text-align: center;
+}
+
+.contactFormDesc > h2 {
+  font-size: 35px;
+  margin-bottom: 10px;
+}
+
+.contactFormInput {
+  height: 5vh;
+  width: 15vw;
+  font-size: large;
+  border: none;
+  border-bottom: 2px solid black;
+}
+.contactFormInput:focus {
+  outline: none;
+}
+
+.contactFormDesc > p {
+  font-family: "Bellefair", serif;
+}
+.contactBtn {
+  height: 4vh;
+  width: 7vw;
+  font-family: "Roboto Condensed", sans-serif;
+  border-radius: 15px;
+  background-color: #f8e6d8;
+  box-shadow: 2px 2px 0px rgba(0, 0, 0, 0.5);
+}
+.contactBtn:hover {
+  background-color: #fadfca;
+}
+.contactRight {
+  height: 60vh;
+  box-shadow: 0 0 15px 5px #ddd;
+}
+
+.socialCard > a {
+  text-decoration: none;
+  color: black;
+}
+
+#contactform {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  position: relative;
+  overflow: hidden;
+  z-index: 500;
+  width: 400px;
+  height: 100vh;
+}
+
+#contactform input,
+#contactform textarea {
+  border: 0;
+  margin-bottom: 10px;
+  padding: 20px;
+  font-size: 17px;
+  background-color: transparent;
+  color: black;
+  font-weight: 200;
+  border: 1px solid black;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
+    Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+}
+
+#contactform input::placeholder,
+#contactform textarea::placeholder {
+  color: black;
+  opacity: 0.8;
+}
+
+.submit {
+  padding: 15px;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  outline: 1px solid black;
+  outline-offset: -1px;
+  border: 0;
+  cursor: pointer;
+  background-color: #ec8c25;
+  color: black;
+  font-weight: 500;
+  font-family: Futura;
+  font-size: larger;
+  position: relative;
+}
+
+.submit p {
+  margin: 0;
+  padding: 0;
+}
+
+#update {
+  z-index: 2000;
+  display: inline-flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  top: 0;
+  width: 96%;
+  margin: 5px;
+  height: 81%;
+  position: absolute;
+  font-size: 15px;
+}
+
+#sentImg {
+  height: 30vh;
+  width: 15vw;
+}
+
+#update p {
+  margin: 5;
+  padding: 0;
+  text-align: center;
+}
+
+#btn {
+  width: 150px;
+  border-radius: 0;
+  border: 0;
+  padding: 10px;
+  background-color: transparent;
+  border: 1px solid black;
+  color: black;
+  font-weight: 200;
+  font-size: 13px;
+  cursor: pointer;
+  transition: 0.5s;
+  margin-top: 30px;
+}
+
+#btn:hover {
+  border-color: #00ffff;
+  transition: 0.5s;
+}
+
+#rectwrap {
+  position: absolute;
+}
+
+.siz {
+  font-size: 30px;
+}
+
+h1 {
+  font-weight: 200;
+  font-size: 25px;
+  text-align: center;
+}
+
+#afterSent {
+  display: none;
+}
+
+#beforeSent {
+  display: flex;
+}
+
+.sendBox {
+  margin-top: 10vh;
+  height: 40vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+
+}
+
+@media only screen and (max-width: 600px) {
+  .contactContainer {
+    height: auto;
+  }
+
+  .contactUs {
+    flex-direction: column;
+    width: 100vw;
+    height: auto;
+  }
+
+  .contactLeft,
+  .contactRight {
+    width: 80vw;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  .contactRight {
+    margin: 4vh;
+  }
+
+  .contactDesc {
+    width: auto;
+  }
+  .contactSocial {
+    justify-content: space-between;
+  }
+
+  .socialCard {
+    margin-bottom: 0;
+    width: 30vw;
+    margin-bottom: 3vh;
+  }
+
+  #cmail {
+    font-size: x-small;
+  }
+
+  #contactform {
+    width: auto;
+    height: 55vh;
+  }
+
+  .sendBox {
+    margin-top: 0;
+    justify-content: center;
+  }
+
+  #sentImg{
+    height: 25vh;
+    width: 40vw;
+  }
+
+  #ymss{
+    font-size: small;
+  }
+}
