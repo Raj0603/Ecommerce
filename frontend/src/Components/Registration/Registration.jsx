@@ -12,6 +12,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { clearErrors, login, register } from "../../actions/userActions";
 import { useAlert } from "react-alert";
 import {useNavigate} from "react-router-dom"
+import Metadata from "../Metadata"
 
 const Registration = ({location}) => {
   const dispatch = useDispatch();
@@ -111,6 +112,7 @@ const Registration = ({location}) => {
         <Loading />
       ) : (
         <Fragment>
+          <Metadata title="Register" />
           <div className="LoginSignUpContainer">
             <div className="LoginSignUpBox">
               <div>

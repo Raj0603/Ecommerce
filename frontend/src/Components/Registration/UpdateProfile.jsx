@@ -1,5 +1,4 @@
 import "./UpdateProfile.css";
-
 import React, { Fragment, useState, useEffect } from "react";
 import "./Registration.css";
 import Loading from "../Loader/Loading";

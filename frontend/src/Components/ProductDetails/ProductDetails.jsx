@@ -21,6 +21,7 @@ import {
   Rating
 } from "@mui/material";
 import { NEW_REVIEW_RESET } from "../../constants/productConstants";
+import Metadata from "../Metadata"
 
 const ProductDetails = () => {
   const dispatch = useDispatch();
@@ -107,6 +108,7 @@ const ProductDetails = () => {
         <Loading />
       ) : (
         <>
+        <Metadata title={product.name}/>
           <div className="ProductDetails">
             <div>
               <Carousel className="carouselProduct">

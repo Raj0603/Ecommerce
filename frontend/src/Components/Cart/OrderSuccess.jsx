@@ -1,18 +1,24 @@
-import React from "react";
+import React, { useEffect } from "react";
 import CheckCircleIcon from "@mui/icons-material/CheckCircle";
 import "./orderSuccess.css";
 import { Typography } from "@mui/material";
-import { EMPTY_CART_INFO } from "../../constants/cartConstants";
 import { Link } from "react-router-dom";
+import { emptyCartItems } from "../../actions/cartActions";
+import { useDispatch } from "react-redux";
+import Metadata from "../Metadata"
 
 const OrderSuccess = () => {
 
-  
+  const dispatch = useDispatch();
 
+  useEffect(()=>{
+    dispatch(emptyCartItems())
+  },[]);
+  
   return (
     <>
+    <Metadata title="Order Successful"/>
      <span className="eci">
-     {EMPTY_CART_INFO}
 
       </span>
     <div className="orderSuccess">

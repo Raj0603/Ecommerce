@@ -114,12 +114,14 @@ const Dashboard = () => {
           </div>
         </div>
 
-        <div className="lineChart">
-          <Line data={lineState} />
-        </div>
+        <div className="dashboard-graphs">
+          <div className="lineChart">
+            <Line data={lineState} />
+          </div>
 
-        <div className="doughnutChart">
-          <Doughnut data={doughnutState} />
+          <div className="doughnutChart">
+            <Doughnut data={doughnutState} />
+          </div>
         </div>
       </div>
     </div>

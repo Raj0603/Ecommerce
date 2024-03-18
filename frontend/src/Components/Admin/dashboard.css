@@ -67,13 +67,19 @@
 }
 
 .lineChart {
-  width: 80%;
+  width: 65%;
   margin: auto;
 }
 
 .doughnutChart {
   width: 30vmax;
   margin: auto;
+}
+
+.dashboard-graphs{
+  display: flex;
+  justify-content: center;
+  padding: 20px;
 }
 
 @media screen and (max-width: 600px) {

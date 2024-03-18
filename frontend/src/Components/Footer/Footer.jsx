@@ -17,8 +17,8 @@ function Footer(){
                         <div className="single-cta">
                             <i className="fas fa-map-marker-alt"></i>
                             <div className="cta-text">
-                                <h4>Find us</h4>
-                                <span>1010 Avenue, sw 54321, chandigarh</span>
+                                <h4>Find Me</h4>
+                                <span>Mumbai, Maharashtra</span>
                             </div>
                         </div>
                     </div>
@@ -26,8 +26,8 @@ function Footer(){
                         <div className="single-cta">
                             <i className="fas fa-phone"></i>
                             <div className="cta-text">
-                                <h4>Call us</h4>
-                                <span>9876543210 0</span>
+                                <h4>Call Me</h4>
+                                <span>8421843544</span>
                             </div>
                         </div>
                     </div>
@@ -35,8 +35,8 @@ function Footer(){
                         <div className="single-cta">
                             <i className="far fa-envelope-open"></i>
                             <div className="cta-text">
-                                <h4>Mail us</h4>
-                                <span>mail@info.com</span>
+                                <h4>Mail Me</h4>
+                                <span>rajsrivastav0603@gmail.com</span>
                             </div>
                         </div>
                     </div>
@@ -52,8 +52,7 @@ function Footer(){
                                 </Link>
                             </div>
                             <div className="footer-text">
-                                <p>Lorem ipsum dolor sit amet, consec tetur adipisicing elit, sed do eiusmod tempor incididuntut consec tetur adipisicing
-                                elit,Lorem ipsum dolor sit amet.</p>
+                                <p>Thank you for visiting Wardrobezz. We strive to provide you with an exceptional shopping experience, offering a wide range of high-quality products at competitive prices. Feel free to explore our diverse selection and discover new favorites. For any inquiries or assistance, please don't hesitate to contact our dedicated customer support team. Happy shopping!</p>
                             </div>
                             <div className="footer-social-icon">
                                 <span>Follow us</span>
@@ -107,7 +106,7 @@ function Footer(){
                 <div className="row">
                     <div className="col-xl-6 col-lg-6 text-center text-lg-left">
                         <div className="copyright-text">
-                            <p>Copyright &copy; 2018, All Right Reserved <a href="">Raj</a></p>
+                            <p>Copyright &copy; 2024, All Right Reserved <a href="">RAJ SRIVASTAV</a></p>
                         </div>
                     </div>
                     <div className="col-xl-6 col-lg-6 d-none d-lg-block text-right">

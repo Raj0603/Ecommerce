@@ -1,11 +1,13 @@
 import "./AboutPage.css";
 import profilepic from "../../assets/wd.jpg";
 import cv from "../../assets/Raj srivastav Resume.pdf"
+import Metadata from "../Metadata";
 
 const AboutPage = () => {
 
   return (
     <>
+    <Metadata title="About Page" />
       <div className="aboutContainer">
         <div className="aboutHeading">
           <h1 id="aboutText">ABOUT ME</h1>

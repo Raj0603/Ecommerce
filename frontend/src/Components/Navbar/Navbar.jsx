@@ -1,31 +1,22 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
 
 import "./Navbar.css";
-import Logo from "../../assets/logo.png";
-// import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-// import {
-//   faShoppingCart,
-// } from "@fortawesome/fontawesome-free-solid";
+import Logo from "../../assets/logo2.png";
 import { ShoppingCart, CircleUser } from "lucide-react";
 import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { useAlert } from "react-alert";
 import { logout } from "../../actions/userActions";
 import { EMPTY_CART_INFO } from "../../constants/cartConstants";
 
-const Navbar = ({ user, isAuthenticated }) => {
+const Navbar = ({ isAuthenticated, user }) => {
   const dispatch = useDispatch();
   const alert = useAlert();
 
   const navigate = useNavigate();
   const [isAdmin, setIsAdmin] = useState(false);
-  // const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
-
-  // const handleMenuToggle = () => {
-  //   setIsMenuOpen(!isMenuOpen);
-  // };
 
   const handleDropdownToggle = () => {
     setIsDropdownOpen(!isDropdownOpen);
@@ -68,11 +59,11 @@ const Navbar = ({ user, isAuthenticated }) => {
               <Link to="/">
                 <li>Home</li>
               </Link>
-              
+
               <Link to="/products">
                 <li>Products</li>
               </Link>
-              
+
               <a href="#">
                 <li>About</li>
               </a>
@@ -103,14 +94,12 @@ const Navbar = ({ user, isAuthenticated }) => {
           <ul className="right-search">
             <li className="search-list">
               <form onSubmit={searchSubmitHandler}>
-                {/* <FontAwesomeIcon icon={faSearch} className="fa-lg" /> */}
                 <input
                   id="nav-search"
                   type="text"
                   placeholder="Search Products"
                   onChange={(e) => setKeyword(e.target.value)}
                 />
-                {/* <input type="submit" value="Search" /> */}
               </form>
             </li>
             <li className="search-list icon-nav" id="nav-sc">
@@ -120,13 +109,21 @@ const Navbar = ({ user, isAuthenticated }) => {
             </li>
             <li className="search-list icon-nav p-img">
               <span onClick={handleDropdownToggle}>
-                {/* <img
-                  src={"/Profile.png"}
-                  alt="/Profile.png"
-                  className="profile-img"
-                /> */}
+                {isAuthenticated ? (
+                  <img
+                    src={user.avatar.url}
+                    alt="Profile"
+                    className="profile-img"
+                  />
+                ) : (
+                  <img
+                    src="/Profile.png"
+                    alt="Profile"
+                    className="profile-img"
+                  />
+                )}
                 {/* <CircleUser color="#050505" className="profile-img" /> */}
-                <CircleUser size={32} color="#050505" />
+                {/* <CircleUser size={32} color="#050505" /> */}
               </span>
               <ul
                 className={

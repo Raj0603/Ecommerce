@@ -9,6 +9,7 @@ import { useAlert } from "react-alert";
 import Slider from "@mui/material/Slider";
 import { Typography } from "@mui/material";
 import { useParams } from "react-router-dom";
+import Metadata from "../Metadata"
 
 const categories = ["Laptop", "Phone"];
 
@@ -77,6 +78,7 @@ const Products = () => {
         <Loading />
       ) : (
         <>
+        <Metadata title="Products"/>
         <div className="mobileToggleBar" onClick={toggleFilter}>
             <span>{isFilterOpen ? "Hide Filters" : "Show Filters"}</span>
           </div>

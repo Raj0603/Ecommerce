@@ -11,7 +11,6 @@ import {
   useStripe,
   useElements,
 } from "@stripe/react-stripe-js";
-
 import axios from "axios";
 import "./payment.css";
 import CreditCardIcon from "@mui/icons-material/CreditCard";
@@ -22,6 +21,7 @@ import { useNavigate } from "react-router-dom";
 
 const Payment = () => {
   const orderInfo = JSON.parse(sessionStorage.getItem("orderInfo"));
+  console.log(orderInfo)
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const alert = useAlert();

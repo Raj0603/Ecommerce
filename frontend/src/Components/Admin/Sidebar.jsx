@@ -1,6 +1,6 @@
 import React from "react";
 import "./sidebar.css";
-import logo from "../../assets/logo.png";
+import logo from "../../assets/logo2.png";
 import { Link } from "react-router-dom";
 import { TreeView, TreeItem } from "@mui/lab";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";

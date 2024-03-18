@@ -4,6 +4,7 @@ import React from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import sentImg from "../../assets/sent.jpg"
 import { faEnvelope, faPhone } from "@fortawesome/free-solid-svg-icons";
+import Metadata from "../Metadata";
 
 class ContactPage extends React.Component {
   state = {
@@ -59,69 +60,7 @@ class ContactPage extends React.Component {
     
     return (
       <>
-       {/* <div id="filterToggle">
-            <input type="checkbox" />
-
-            <span className="spn-fil"></span>
-            <span className="spn-fil"></span>
-            <span className="spn-fil"></span>
-
-            <span id="span-filter">Filters</span>
-
-            <div className="filterBox" id="menu">
-              <span className="typ">Price</span>
-              <div className="price-input-boxes">
-                <input
-                  type="number"
-                  placeholder="Min"
-                  onChange={(e) => setMinPrice(e.target.value)}
-                  className="prp-ip"
-                />
-                <input
-                  type="number"
-                  placeholder="Max"
-                  onChange={(e) => setMaxPrice(e.target.value)}
-                  className="prp-ip"
-                />
-
-                <button className="prp-but" onClick={priceHandler}>
-                  Search
-                </button>
-              </div>
-
-              <span className="typ">Categories</span>
-              <ul className="categoryBox">
-                {categories.map((category) => (
-                  <li
-                    key={category}
-                    className="category-link"
-                    onClick={() => setCategory(category)}
-                  >
-                    {category}
-                  </li>
-                ))}
-              </ul>
-
-              <span component="legend" className="typ">
-                Ratings Above
-              </span>
-              <Slider
-                value={ratings}
-                onChange={(e, newRating) => {
-                  setRating(newRating);
-                }}
-                aria-labelledby="continuous-slider"
-                valueLabelDisplay="auto"
-                valueLabelStep={0.1}
-                min={0}
-                max={5}
-              />
-
-              <button className="prp-but" onClick={resetFilters}>
-                Reset
-              </button>
-            </div>
-          </div> */}
+      <Metadata title="Contact Page" />
         <div className="contactContainer" id="ContactPage">
           <div className="contactHeading">
             <h1 id="aboutText">CONTACT</h1>

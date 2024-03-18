@@ -1,18 +1,16 @@
 import React, { Fragment } from "react";
 import CheckoutSteps from "./CheckoutSteps";
-import { useDispatch, useSelector } from "react-redux";
+import { useSelector } from "react-redux";
 import MetaData from "../Metadata";
 import "./ConfirmOrder.css";
 import { Link } from "react-router-dom";
 import { Typography } from "@mui/material";
 import { useNavigate } from "react-router-dom";
-import { EMPTY_CART_INFO } from "../../constants/cartConstants";
 
 const ConfirmOrder = () => {
   const { shippingInfo, cartItems } = useSelector((state) => state.cart);
   const { user } = useSelector((state) => state.user);
   const navigate = useNavigate();
-  const dispatch = useDispatch()
   const subtotal = cartItems.reduce(
     (acc, item) => acc + item.quantity * item.price,
     0
@@ -37,10 +35,7 @@ const ConfirmOrder = () => {
     sessionStorage.setItem("orderInfo", JSON.stringify(data));
 
    navigate("/process/payment");
-   
-    dispatch({
-      type: EMPTY_CART_INFO
-    })
+
   };
 
   return (

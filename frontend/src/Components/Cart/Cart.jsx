@@ -7,6 +7,7 @@ import { Typography } from "@mui/material";
 import RemoveShoppingCartIcon from '@mui/icons-material/RemoveShoppingCart';
 import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
+import Metadata from "../Metadata"
 
 const Cart = () => {
   const dispatch = useDispatch();
@@ -39,6 +40,7 @@ const Cart = () => {
 
   return (
     <Fragment>
+      <Metadata title="Cart"/>
       {cartItems.length === 0 ? (
         <div className="emptyCart">
           <RemoveShoppingCartIcon />
